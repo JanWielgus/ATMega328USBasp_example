@@ -17,23 +17,23 @@ If you would have `avrdude error: cannot set sck period; please check for usbasp
 
 ## Crystal oscilator
 
-I have used 11.0592 MHz external.
+Used 11.0592 MHz external.
 
 ## Fuse bits
 
-I have used the following:
+Used the following:
 
 - lfuse	0xF7	Full Swing Crystal Oscillator, 16K + 64ms startup (slow startup)<br>
   my project had to be very stable so I set slow startup
 - hfuse	0xD9	SPIEN on, BOOTRST off, BOD off
 - efuse	0xFF	Brown-Out Detection off (change to 0xFD if you want BOD 2.7 V)
 
-I set fuse bits with this command:
+Set fuse bits with this command:
 ```
 avrdude -c usbasp -p m328p -U lfuse:w:0xF7:m -U hfuse:w:0xD9:m -U efuse:w:0xFF:m
 ```
 
-You can read existing fuse with this command:
+Read existing fuse with this command:
 ```
 avrdude -c usbasp -p m328p -U lfuse:r:-:h -U hfuse:r:-:h -U efuse:r:-:h
 ```
